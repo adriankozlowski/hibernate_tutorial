@@ -8,6 +8,7 @@ import pl.sda.model.Reservation;
 
 import java.util.HashSet;
 
+
 public class Main {
     public static void main(String[] args) {
         SessionFactory instance = HbnConfig.getInstance();

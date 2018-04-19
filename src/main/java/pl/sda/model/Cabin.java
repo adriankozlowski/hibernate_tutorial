@@ -1,9 +1,7 @@
 package pl.sda.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Cabin {
@@ -17,5 +15,27 @@ public class Cabin {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @ManyToOne(optional = false)
+    private Ship cabin;
+
+    public Ship getCabin() {
+        return cabin;
+    }
+
+    public void setCabin(Ship cabin) {
+        this.cabin = cabin;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "cabins")
+    private Collection<Reservation> Reservations;
+
+    public Collection<Reservation> getReservations() {
+        return Reservations;
+    }
+
+    public void setReservations(Collection<Reservation> reservations) {
+        Reservations = reservations;
     }
 }
